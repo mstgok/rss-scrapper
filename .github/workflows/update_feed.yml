@@ -25,11 +25,6 @@ jobs:
       - name: Paketleri Yükle
         run: pip install -r requirements.txt
 
-      - name: Dizin İçeriğini Listele
-        run: |
-              pwd
-              ls -la
-
       - name: Betiği Çalıştır
         run: python scraper.py
 
