@@ -1,7 +1,9 @@
+
 import html
-import requests
+import xml.dom.minidom
 from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
+import requests
 
 # Hedef duyuru sayfasının URL'si
 TARGET_URL = "https://www.cu.edu.tr/sayfalar/tum-duyurular"
@@ -13,8 +15,6 @@ HEADERS = {
 def generate_rss():
   response = requests.get(TARGET_URL, headers=HEADERS, timeout=15)
   response.raise_for_status()
-
-  # Karakter kodlama uyumsuzluğunu önlemek için utf-8 ayarı
   response.encoding = response.apparent_encoding
   soup = BeautifulSoup(response.text, "html.parser")
 
@@ -22,40 +22,38 @@ def generate_rss():
   fg.id(TARGET_URL)
   fg.title("Çukurova Üniversitesi Duyuruları")
   fg.link(href=TARGET_URL, rel="alternate")
-  fg.description("Güncel üniversite ve bölüm duyuruları akışı")
+  fg.description("Güncel duyurular akışı")
   fg.language("tr")
 
-  # Her bir duyuru bloğunu yakala
   entries = soup.select("div.entry")
 
   for entry in entries:
-    # 1. Başlık ve URL alma
     link_elem = entry.select_one(".entry-title h2 a")
     if not link_elem:
       continue
 
-    raw_title = link_elem.get_text(strip=True)
-    title = html.unescape(raw_title)  # HTML entity karakterlerini düzelt
-
+    title = html.unescape(link_elem.get_text(strip=True))
     link = link_elem.get("href", "").strip()
     if not link.startswith("http"):
       link = requests.compat.urljoin(TARGET_URL, link)
 
-    # 2. Tarih bilgisini meta alanından çekme
     date_elem = entry.select_one(".entry-meta li:has(i.icon-calender3)")
     date_text = date_elem.get_text(strip=True) if date_elem else ""
-
     description = f"Yayın Tarihi: {date_text}" if date_text else title
 
-    # 3. RSS girdisi oluşturma
     fe = fg.add_entry()
     fe.id(link)
     fe.title(title)
     fe.link(href=link)
     fe.description(description)
 
-  # Dosyayı ana dizine yaz
-  fg.rss_file("feed.xml", pretty=True)
+  # --- Düzgün Girintili (Pretty-Print) XML Kaydı ---
+  raw_rss = fg.rss_str()
+  dom = xml.dom.minidom.parseString(raw_rss)
+  pretty_xml = dom.toprettyxml(indent="  ", encoding="utf-8")
+
+  with open("feed.xml", "wb") as f:
+    f.write(pretty_xml)
 
 
 if __name__ == "__main__":
