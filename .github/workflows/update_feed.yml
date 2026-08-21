@@ -2,8 +2,8 @@ name: RSS Feed Güncelleyici
 
 on:
   schedule:
-    - cron: "0 */3 * * *"  # Her 3 saatte bir çalışır
-  workflow_dispatch:        # Elle tetikleme butonu sağlar
+    - cron: "0 */3 * * *"
+  workflow_dispatch:
 
 permissions:
   contents: write
@@ -13,10 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Depoyu Klonla
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Python Kurulumu
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: "3.11"
           cache: "pip"
