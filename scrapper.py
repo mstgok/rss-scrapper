@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
 import requests
 
-TARGET_URL = "https://ornek-site.com/duyurular"
+TARGET_URL = "https://cu.edu.tr/sayfalar/tum-duyurular"
 HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
 
 def generate_rss():
