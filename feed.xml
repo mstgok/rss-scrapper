@@ -1,13 +1,13 @@
-<?xml version='1.0' encoding='UTF-8'?>
+<?xml version="1.0" encoding="utf-8"?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/" version="2.0">
   <channel>
     <title>Çukurova Üniversitesi Duyuruları</title>
     <link>https://www.cu.edu.tr/sayfalar/tum-duyurular</link>
-    <description>Güncel üniversite ve bölüm duyuruları akışı</description>
+    <description>Güncel duyurular akışı</description>
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>tr</language>
-    <lastBuildDate>Fri, 21 Aug 2026 09:39:23 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 10:44:21 +0000</lastBuildDate>
     <item>
       <title>2026 ÜNVAN DEĞİŞİKLİĞİ KESİNLEŞEN SINAV SONUÇLARI (ASİL-YEDEK)</title>
       <link>https://www.cu.edu.tr/haber-detay/2026-unvan-degısıklıgı-kesınlesen-sınav-sonucları-asıl-yedek/</link>
