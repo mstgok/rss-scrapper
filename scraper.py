@@ -32,6 +32,7 @@ def generate_rss():
     if not link_elem:
       continue
 
+    
     title = html.unescape(link_elem.get_text(strip=True))
     link = link_elem.get("href", "").strip()
     if not link.startswith("http"):
@@ -41,11 +42,23 @@ def generate_rss():
     date_text = date_elem.get_text(strip=True) if date_elem else ""
     description = f"Yayın Tarihi: {date_text}" if date_text else title
 
+   
+
+    # RSS okuyucunun içeriğinde tıklanabilir buton/link oluşturacak HTML yapısı
+    html_description = f"""
+    <p><strong>Yayın Tarihi:</strong> {date_text}</p>
+    <p><a href="{link}" target="_blank" rel="noopener noreferrer">
+     Duyuru Detayı ve Ekler İçin Tıklayınız &raquo;</a></p>
+    """
+
+    # 3. RSS Girdisi
     fe = fg.add_entry()
     fe.id(link)
     fe.title(title)
-    fe.link(href=link)
-    fe.description(description)
+    fe.link(href=link, rel="alternate")
+    fe.description(html_description)
+    
+   
 
   # --- Düzgün Girintili (Pretty-Print) XML Kaydı ---
   raw_rss = fg.rss_str()
