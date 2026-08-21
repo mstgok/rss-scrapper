@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
 
 # Hedef duyuru sayfasının URL'si
-TARGET_URL = "https://ornek-universite-adresi.edu.tr/duyurular"
+TARGET_URL = "https://www.cu.edu.tr/sayfalar/tum-duyurular"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
 }
