@@ -1,47 +1,62 @@
-import os
+import html
+import requests
 from bs4 import BeautifulSoup
 from feedgen.feed import FeedGenerator
-import requests
 
-TARGET_URL = "https://cu.edu.tr/sayfalar/tum-duyurular"
-HEADERS = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}
+# Hedef duyuru sayfasının URL'si
+TARGET_URL = "https://ornek-universite-adresi.edu.tr/duyurular"
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+}
+
 
 def generate_rss():
-    response = requests.get(TARGET_URL, headers=HEADERS, timeout=15)
-    response.raise_for_status()
-    soup = BeautifulSoup(response.text, "html.parser")
+  response = requests.get(TARGET_URL, headers=HEADERS, timeout=15)
+  response.raise_for_status()
 
-    fg = FeedGenerator()
-    fg.id(TARGET_URL)
-    fg.title("Örnek Site Güncel Duyurular")
-    fg.link(href=TARGET_URL, rel="alternate")
-    fg.description("Otomatik üretilen özel RSS akışı")
-    fg.language("tr")
+  # Karakter kodlama uyumsuzluğunu önlemek için utf-8 ayarı
+  response.encoding = response.apparent_encoding
+  soup = BeautifulSoup(response.text, "html.parser")
 
-    # Sayfadaki haber/duyuru kutularını seçin
-    items = soup.select(".duyuru-listesi .duyuru-item")
+  fg = FeedGenerator()
+  fg.id(TARGET_URL)
+  fg.title("Çukurova Üniversitesi Duyuruları")
+  fg.link(href=TARGET_URL, rel="alternate")
+  fg.description("Güncel üniversite ve bölüm duyuruları akışı")
+  fg.language("tr")
 
-    for item in items[:15]:  # Son 15 içeriği al
-        title_elem = item.select_one("a.baslik")
-        if not title_elem:
-            continue
+  # Her bir duyuru bloğunu yakala
+  entries = soup.select("div.entry")
 
-        title = title_elem.get_text(strip=True)
-        link = title_elem.get("href", "")
-        if not link.startswith("http"):
-            link = requests.compat.urljoin(TARGET_URL, link)
+  for entry in entries:
+    # 1. Başlık ve URL alma
+    link_elem = entry.select_one(".entry-title h2 a")
+    if not link_elem:
+      continue
 
-        desc_elem = item.select_one(".ozet")
-        description = desc_elem.get_text(strip=True) if desc_elem else title
+    raw_title = link_elem.get_text(strip=True)
+    title = html.unescape(raw_title)  # HTML entity karakterlerini düzelt
 
-        fe = fg.add_entry()
-        fe.id(link)
-        fe.title(title)
-        fe.link(href=link)
-        fe.description(description)
+    link = link_elem.get("href", "").strip()
+    if not link.startswith("http"):
+      link = requests.compat.urljoin(TARGET_URL, link)
 
-    # Dosyayı ana dizine yaz
-    fg.rss_file("feed.xml", pretty=True)
+    # 2. Tarih bilgisini meta alanından çekme
+    date_elem = entry.select_one(".entry-meta li:has(i.icon-calender3)")
+    date_text = date_elem.get_text(strip=True) if date_elem else ""
+
+    description = f"Yayın Tarihi: {date_text}" if date_text else title
+
+    # 3. RSS girdisi oluşturma
+    fe = fg.add_entry()
+    fe.id(link)
+    fe.title(title)
+    fe.link(href=link)
+    fe.description(description)
+
+  # Dosyayı ana dizine yaz
+  fg.rss_file("feed.xml", pretty=True)
+
 
 if __name__ == "__main__":
-    generate_rss()
+  generate_rss()
