@@ -86,7 +86,7 @@ def scrape_hacettepe():
 
     # İlgili sitenin kendi HTML yapısına göre CSS seçicileri
     for card in soup.select("div.duyuru")[:15]:
-      link_elem = card.select_one("duyuru_baslik a")
+      link_elem = card.select_one("duyuru_baslik")
       if not link_elem:
         continue
 
@@ -95,7 +95,7 @@ def scrape_hacettepe():
       if not link.startswith("http"):
         link = requests.compat.urljoin(url, link)
 
-      desc = f'<p><a href="{link}" target="_blank">🔗 Habere Git &raquo;</a></p>'
+      desc = f'<p><a href="{link}" target="_blank"> Habere Git &raquo;</a></p>'
 
       fe = fg.add_entry()
       fe.id(link)
