@@ -70,7 +70,7 @@ def scrape_universite():
 # 2. SİTE: Hacettepe Üniversitesi Öğrenci Duyuruları
 # -------------------------------------------------------------
 def scrape_hacettepe():
-  url = "https://https://oidb.hacettepe.edu.tr/"
+  url = "https://https://www.oidb.hacettepe.edu.tr"
   fg = FeedGenerator()
   fg.id(url)
   fg.title("Hacettepe Üniversitesi Öğrenci İşleri Duyuruları")
