@@ -70,12 +70,12 @@ def scrape_universite():
 # 2. SİTE: Hacettepe Üniversitesi Öğrenci Duyuruları
 # -------------------------------------------------------------
 def scrape_hacettepe():
-  url = "https://https://www.oidb.hacettepe.edu.tr"
+  url = "https://oidb.hacettepe.edu.tr/tr/duyurular"
   fg = FeedGenerator()
   fg.id(url)
-  fg.title("Hacettepe Üniversitesi Öğrenci İşleri Duyuruları")
+  fg.title("Hacettepe Üniversitesi ÖİDB Duyuruları")
   fg.link(href=url, rel="alternate")
-  fg.description("Güncel Duyurular")
+  fg.description("Hacettepe Üniversitesi Öğrenci İşleri Daire Başkanlığı Duyuruları")
   fg.language("tr")
 
   try:
@@ -84,9 +84,11 @@ def scrape_hacettepe():
     resp.encoding = resp.apparent_encoding
     soup = BeautifulSoup(resp.text, "html.parser")
 
-    # İlgili sitenin kendi HTML yapısına göre CSS seçicileri
-    for card in soup.select("div.duyuru")[:15]:
-      link_elem = card.select_one("duyuru_baslik")
+    # Hacettepe ÖİDB duyuruları DataTables tablosundaki <tr> satırlarıdır
+    rows = soup.select("table tbody tr")
+
+    for row in rows[:20]:
+      link_elem = row.select_one("a")
       if not link_elem:
         continue
 
@@ -95,18 +97,28 @@ def scrape_hacettepe():
       if not link.startswith("http"):
         link = requests.compat.urljoin(url, link)
 
-      desc = f'<p><a href="{link}" target="_blank"> Habere Git &raquo;</a></p>'
+      # Tablodaki tarih sütununu veya metin içerisindeki YYYY-MM-DD tarih formatını yakala
+      row_text = row.get_text(" ", strip=True)
+      date_match = re.search(r"\d{4}-\d{2}-\d{2}", row_text) or re.search(
+          r"\d{2}\.\d{2}\.\d{4}", row_text
+      )
+      date_text = date_match.group(0) if date_match else "Belirtilmedi"
+
+      html_description = f"""
+            <p><strong>Yayın Tarihi:</strong> {date_text}</p>
+            <p><a href="{link}" target="_blank" rel="noopener noreferrer">🔗 Hacettepe ÖİDB Duyuru Detayı &raquo;</a></p>
+            """
 
       fe = fg.add_entry()
       fe.id(link)
       fe.title(title)
       fe.link(href=link, rel="alternate")
-      fe.description(desc)
+      fe.description(html_description)
 
     save_pretty_xml(fg, "feed_hacettepe.xml")
-    print("✓ Hacettepe öğrenci duyuruları başarıyla güncellendi.")
+    print("✓ [feed_hacettepe.xml] başarıyla oluşturuldu.")
   except Exception as e:
-    print(f"✗ Hacettepe öğrenci duyuruları kazıma hatası: {e}")
+    print(f"✗ Hacettepe kazıma hatası: {e}")
 
 
 if __name__ == "__main__":
