@@ -7,16 +7,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>tr</language>
-    <lastBuildDate>Tue, 08 Sep 2026 13:12:26 +0000</lastBuildDate>
-    <item>
-      <title>Öğrenci Bilgi Sistemi mobil uygulaması kullanıma sunuldu</title>
-      <link>https://gazete.hacettepe.edu.tr//tr/haber/ogrenci_bilgi_sistemi_mobil_uygulamasi_kullanima_sunuldu-633</link>
-      <description>
-            &lt;p&gt;&lt;strong&gt;Yayın Tarihi:&lt;/strong&gt; 2024-09-13&lt;/p&gt;
-            &lt;p&gt;&lt;a href=&quot;https://gazete.hacettepe.edu.tr//tr/haber/ogrenci_bilgi_sistemi_mobil_uygulamasi_kullanima_sunuldu-633&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;🔗 Hacettepe ÖİDB Duyuru Detayı &amp;raquo;&lt;/a&gt;&lt;/p&gt;
-            </description>
-      <guid isPermaLink="false">https://gazete.hacettepe.edu.tr//tr/haber/ogrenci_bilgi_sistemi_mobil_uygulamasi_kullanima_sunuldu-633</guid>
-    </item>
+    <lastBuildDate>Tue, 08 Sep 2026 18:13:27 +0000</lastBuildDate>
     <item>
       <title>Öğrencilerimizin Öğrenci Bilgi Sistemi'nde kayıtlı iletişim epostaları hk</title>
       <link>https://oidb.hacettepe.edu.tr/tr/ogrencilerimizin_ogrenci_bilgi-823</link>
@@ -232,6 +223,15 @@
             &lt;p&gt;&lt;a href=&quot;https://oidb.hacettepe.edu.tr/tr/&lt;img_src=httpfshacettepeedutry-1136&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;🔗 Hacettepe ÖİDB Duyuru Detayı &amp;raquo;&lt;/a&gt;&lt;/p&gt;
             </description>
       <guid isPermaLink="false">https://oidb.hacettepe.edu.tr/tr/&lt;img_src=httpfshacettepeedutry-1136</guid>
+    </item>
+    <item>
+      <title>2026-2027 Akademik Yılı Yurtdışından Öğrenci Kabulü TRYÖS, SAT 1 Sınavları ve GCE A Level Başvurularında Boş Kalan Kontenjanlar İçin Kayıt Hakkı Verilen 1. Yedek Aday Listeleri</title>
+      <link>https://internationalstudents.hacettepe.edu.tr/tr/placement-results-reserve-1</link>
+      <description>
+            &lt;p&gt;&lt;strong&gt;Yayın Tarihi:&lt;/strong&gt; 2026-09-08&lt;/p&gt;
+            &lt;p&gt;&lt;a href=&quot;https://internationalstudents.hacettepe.edu.tr/tr/placement-results-reserve-1&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;🔗 Hacettepe ÖİDB Duyuru Detayı &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+            </description>
+      <guid isPermaLink="false">https://internationalstudents.hacettepe.edu.tr/tr/placement-results-reserve-1</guid>
     </item>
   </channel>
 </rss>
