@@ -7,16 +7,7 @@
     <docs>http://www.rssboard.org/rss-specification</docs>
     <generator>python-feedgen</generator>
     <language>tr</language>
-    <lastBuildDate>Thu, 15 Oct 2026 07:53:28 +0000</lastBuildDate>
-    <item>
-      <title>Yamantürk Vakfı Burs Duyurusu</title>
-      <link>https://oidb.hacettepe.edu.tr/tr/&lt;img_src=httpfshacettepeedutry-1100</link>
-      <description>
-            &lt;p&gt;&lt;strong&gt;Yayın Tarihi:&lt;/strong&gt; 2026-08-09&lt;/p&gt;
-            &lt;p&gt;&lt;a href=&quot;https://oidb.hacettepe.edu.tr/tr/&lt;img_src=httpfshacettepeedutry-1100&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;🔗 Hacettepe ÖİDB Duyuru Detayı &amp;raquo;&lt;/a&gt;&lt;/p&gt;
-            </description>
-      <guid isPermaLink="false">https://oidb.hacettepe.edu.tr/tr/&lt;img_src=httpfshacettepeedutry-1100</guid>
-    </item>
+    <lastBuildDate>Thu, 15 Oct 2026 13:49:54 +0000</lastBuildDate>
     <item>
       <title>2026 YKS Yeni Kayıt Öğrencilerimizin Dikkatine</title>
       <link>https://oidb.hacettepe.edu.tr/tr/menu/%3Cimg_src=httpfshacettepeedutryenika-210</link>
@@ -232,6 +223,15 @@
             &lt;p&gt;&lt;a href=&quot;https://fs.hacettepe.edu.tr/oidb/dosyalar/burslar/2026/Panoramik%20Ankara%20Turu.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;🔗 Hacettepe ÖİDB Duyuru Detayı &amp;raquo;&lt;/a&gt;&lt;/p&gt;
             </description>
       <guid isPermaLink="false">https://fs.hacettepe.edu.tr/oidb/dosyalar/burslar/2026/Panoramik%20Ankara%20Turu.pdf</guid>
+    </item>
+    <item>
+      <title>TİGA Vakfı Burs Duyurusu</title>
+      <link>https://fs.hacettepe.edu.tr/oidb/dosyalar/burslar/2026/Egitim%20Burslarimizla%20Yaninizdayiz%20-%20TIGA%20VAKFI.pdf</link>
+      <description>
+            &lt;p&gt;&lt;strong&gt;Yayın Tarihi:&lt;/strong&gt; 2026-10-15&lt;/p&gt;
+            &lt;p&gt;&lt;a href=&quot;https://fs.hacettepe.edu.tr/oidb/dosyalar/burslar/2026/Egitim%20Burslarimizla%20Yaninizdayiz%20-%20TIGA%20VAKFI.pdf&quot; target=&quot;_blank&quot; rel=&quot;noopener noreferrer&quot;&gt;🔗 Hacettepe ÖİDB Duyuru Detayı &amp;raquo;&lt;/a&gt;&lt;/p&gt;
+            </description>
+      <guid isPermaLink="false">https://fs.hacettepe.edu.tr/oidb/dosyalar/burslar/2026/Egitim%20Burslarimizla%20Yaninizdayiz%20-%20TIGA%20VAKFI.pdf</guid>
     </item>
   </channel>
 </rss>
